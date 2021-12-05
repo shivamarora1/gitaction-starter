@@ -6,4 +6,4 @@ jobs:
   Send-Notification-To-Slack:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event }} event."
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event.name }} event."
