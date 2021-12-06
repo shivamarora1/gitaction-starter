@@ -6,4 +6,6 @@ jobs:
     steps:
         - name: Print actor name
           id: print-actor-name
-          run: echo 'action executed by ${{github.actor}}' 
+          run: |
+            echo 'action executed by ${{github.actor}}'
+            echo 'event information ${{github.event.on}}'
