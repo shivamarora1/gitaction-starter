@@ -4,6 +4,5 @@ jobs:
   Send-Notification-To-Slack:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/toolkit@main
       - name: Echo
         run: echo "::info::Set the Octocat variable"
