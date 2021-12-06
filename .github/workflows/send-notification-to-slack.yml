@@ -1,5 +1,5 @@
 name: Sending notification to slack channel
-on: pull
+on: pull_request
 jobs:
   Send-Notification-To-Slack:
     runs-on: ubuntu-latest
