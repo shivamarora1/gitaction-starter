@@ -6,4 +6,4 @@ jobs:
     steps:
       - uses: actions/toolkit@main
       - name: Echo
-        run: echo "::debug::Set the Octocat variable"
+        run: echo "::info::Set the Octocat variable"
