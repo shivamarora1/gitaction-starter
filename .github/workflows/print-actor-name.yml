@@ -11,4 +11,4 @@ jobs:
           id: print-actor-name
           run: |
             echo 'action executed by ${{github.actor}}'
-            echo 'event information ${{github.event}}'
+            echo 'event information ${{github.ref}}'
