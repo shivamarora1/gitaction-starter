@@ -4,5 +4,11 @@ jobs:
   Send-Notification-To-Slack:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo
-        run: echo "::info::Set the Octocat variable"
+        - name: Post to a Slack channel
+          id: slack
+          uses: slackapi/slack-github-action@v1.16.0
+          with:
+            channel-id: 'C02JGCJ7RD3'
+            slack-message: 'posting from a github action!'
+          env:
+            SLACK_BOT_TOKEN: ${{ secrets.SLAC_BOT_TOKEN }}
