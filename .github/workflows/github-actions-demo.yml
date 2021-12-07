@@ -6,4 +6,4 @@ jobs:
   Get-Information-About-Issue:
     runs-on: ubuntu-latest
     steps:
-      - run: echo '${{github.event.label}} Label and ${{github.event.issue.labels}} Lebels'
+      - run: echo '${{github.event.label}} Label and ${{github.event.issue.labels[0].name}} Lebels'
