@@ -6,4 +6,4 @@ jobs:
   Get-Information-About-Issue:
     runs-on: ubuntu-latest
     steps:
-      - run: echo '${{github.event.issue.labels[0].name}} Label and Sender name is ${{github.event.issue.sender.name}} ${{github.event.issue.sender.login}}'
+      - run: echo '${{github.event.issue.labels[0].name}} Label and Sender name is ${{github.event.sender.name}} ${{github.event.issue.sender.login}}'
