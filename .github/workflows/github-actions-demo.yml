@@ -19,7 +19,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.16.0
         with:
           channel-id: 'C02JGCJ7RD3'
-          payload: "{\"text\":\"posting from a \ngithub action\"}"  
+          payload: "{\"text\":\"posting from a \\ngithub action\"}"  
 #           slack-message: 'A bug ${{ steps.issue-details.outputs.issue_title }} has been raised by ${{ steps.issue-details.outputs.issue_raised_by }}\nIssue Url- ${{ steps.issue-details.outputs.issue_url }}\nRepo Url- ${{ steps.issue-details.outputs.repo_url }}'
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLAC_BOT_TOKEN }}
