@@ -12,6 +12,8 @@ jobs:
       issue-title: ${{github.event.issue.title}}
       repo-name: ${{github.repository.html_url}}
       issue-url: ${{github.event.issue.html_url}}
+    steps:
+      - run : echo 'A bug opened ${{github.event.issue.title}}'
   send_notification:
       needs: issue_openend
       runs-on: ubunt-latest
