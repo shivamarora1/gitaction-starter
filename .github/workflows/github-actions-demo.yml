@@ -1,4 +1,4 @@
-name: Slack notification on issue with bug label is created
+name: Slack notification when issue(bug label) is created
 on:
   issues:
     types: [opened]
