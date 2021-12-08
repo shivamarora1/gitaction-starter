@@ -2,7 +2,7 @@ name: Print actor name
 on: 
   push:
     branches:
-      - main
+      - pull_request
 jobs:
   Print-Actor-Name:
     runs-on: ubuntu-latest
