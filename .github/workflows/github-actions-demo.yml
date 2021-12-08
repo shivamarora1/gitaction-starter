@@ -5,7 +5,7 @@ on:
 jobs:
   issue_openend:
     name: Issue Opened
-    if : ${{github.event.issue.labels[0].name bug}}
+    if : ${{contains(github.event.issue.labels.*.name, 'bug')}}
     runs-on: ubuntu-latest
     outputs:
       issue-raised-by: ${{github.event.sender.login}}
