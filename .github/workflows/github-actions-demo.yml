@@ -7,19 +7,15 @@ jobs:
     name: Issue Opened
     if : ${{contains(github.event.issue.labels.*.name, 'bug')}}
     runs-on: ubuntu-latest
-    outputs:
-      issue-raised-by: ${{github.event.sender.login}}
-      issue-title: ${{github.event.issue.title}}
-      repo-name: ${{github.repository.html_url}}
-      issue-url: ${{github.event.issue.html_url}}
     steps:
-      - run : echo 'A bug opened ${{github.event.issue.title}}'
-  send_notification:
-      needs: issue_openend
-      runs-on: ubunt-latest
-      steps:
-          - name: Print Info
-            run: echo 'A bug ${{needs.issue_openend.outputs.issue-title}} has been raised by ${{needs.issue_openend.outputs.issue-raised-by}}\nIssue Url- ${{needs.issue_openend.outputs.issue-title}}\Repo Url- ${{needs.issue_openend.outputs.repo-name}}' 
+      - name: Get details of issue
+        id: issue-details
+        run : echo '::set-output name=issue_raised_by::${{github.event.sender.login}}'
+        run : echo '::set-output name=issue_title::${{github.event.issue.title}}'
+        run : echo '::set-output name=repo_url::${{github.repository.html_url}}'
+        run : echo '::set-output name=issue_url::${{github..event.issue.html_url}}'
+      - name: Send notification to slack  
+        run: echo 'A bug ${{ steps.issue-details.outputs.issue_title }} has been raised by ${{ steps.issue-details.outputs.issue_raised_by }}\nIssue Url- ${{ steps.issue-details.outputs.issue_url }}\Repo Url- ${{${{ steps.issue-details.outputs.repo_url }}}}' 
 #           - name: Send notification to slack channel
 #             uses: slackapi/slack-github-action@v1.16.0
 #             with:
