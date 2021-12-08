@@ -21,6 +21,7 @@ This repository contains the GitAction which triggers the work flow(sending noti
 - [How to use Git Actions](https://docs.github.com/en/actions)
 
 ### Screen shot of alert send on slack
+![Screenshot](res/screenshot.png)
 
 ### LICENCE
 MIT
