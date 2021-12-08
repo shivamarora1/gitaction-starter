@@ -16,7 +16,7 @@ jobs:
           echo '::set-output name=repo_url::${{github.repository.html_url}}'
           echo '::set-output name=issue_url::${{github..event.issue.html_url}}'
       - name: Send notification to slack  
-        run: echo 'A bug ${{ steps.issue-details.outputs.issue_title }} has been raised by ${{ steps.issue-details.outputs.issue_raised_by }}\nIssue Url- ${{ steps.issue-details.outputs.issue_url }}\Repo Url- ${{${{ steps.issue-details.outputs.repo_url }}}}' 
+        run: echo 'A bug ${{ steps.issue-details.outputs.issue_title }} has been raised by ${{ steps.issue-details.outputs.issue_raised_by }}\nIssue Url- ${{ steps.issue-details.outputs.issue_url }}\Repo Url- ${{ steps.issue-details.outputs.repo_url }}' 
 #           - name: Send notification to slack channel
 #             uses: slackapi/slack-github-action@v1.16.0
 #             with:
