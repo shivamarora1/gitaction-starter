@@ -3,7 +3,25 @@ on:
   issues:
     types: [opened]
 jobs:
-  Get-Information-About-Issue:
+  issue_openend:
+    name: Issue Opened
+    if : ${{github.event.issue.labels[0].name bug}}
     runs-on: ubuntu-latest
-    steps:
-      - run: echo '${{github.event.issue.labels[0].name}} Label and Sender name is ${{github.event.sender.login}} and ${{github.event.sender.node_id}} '
+    outputs:
+      issue-raised-by: ${{github.event.sender.login}}
+      issue-title: ${{github.event.issue.title}}
+      repo-name: ${{github.repository.html_url}}
+      issue-url: ${{github.event.issue.html_url}}
+  send_notification:
+      needs: issue_openend
+      runs-on: ubunt-latest
+      steps:
+          - name: Print Info
+            run: echo 'A bug ${{needs.issue_openend.outputs.issue-title}} has been raised by ${{needs.issue_openend.outputs.issue-raised-by}}\nIssue Url- ${{needs.issue_openend.outputs.issue-title}}\Repo Url- ${{needs.issue_openend.outputs.repo-name}}' 
+#           - name: Send notification to slack channel
+#             uses: slackapi/slack-github-action@v1.16.0
+#             with:
+#               channel-id: 'C02JGCJ7RD3'
+#               slack-message: 'Bug ${{needs.issue_openend.outputs.issue-title}} has been raised by ${{needs.issue_openend.outputs.issue-raised-by}}'
+#             env:
+#               SLACK_BOT_TOKEN: ${{ secrets.SLAC_BOT_TOKEN }}
