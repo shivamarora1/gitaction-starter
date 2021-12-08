@@ -15,12 +15,10 @@ jobs:
           echo '::set-output name=issue_title::${{github.event.issue.title}}'
           echo '::set-output name=repo_url::${{github.event.repository.html_url}}'
           echo '::set-output name=issue_url::${{github.event.issue.html_url}}'
-      - name: Send notification to slack  
-        run: echo 'A bug ${{ steps.issue-details.outputs.issue_title }} has been raised by ${{ steps.issue-details.outputs.issue_raised_by }}\nIssue Url- ${{ steps.issue-details.outputs.issue_url }}\Repo Url- ${{ steps.issue-details.outputs.repo_url }}' 
-#           - name: Send notification to slack channel
-#             uses: slackapi/slack-github-action@v1.16.0
-#             with:
-#               channel-id: 'C02JGCJ7RD3'
-#               slack-message: 'Bug ${{needs.issue_openend.outputs.issue-title}} has been raised by ${{needs.issue_openend.outputs.issue-raised-by}}'
-#             env:
-#               SLACK_BOT_TOKEN: ${{ secrets.SLAC_BOT_TOKEN }}
+      - name: Send notification to slack   
+        uses: slackapi/slack-github-action@v1.16.0
+        with:
+          channel-id: 'C02JGCJ7RD3'
+          slack-message: 'A bug ${{ steps.issue-details.outputs.issue_title }} has been raised by ${{ steps.issue-details.outputs.issue_raised_by }}\nIssue Url- ${{ steps.issue-details.outputs.issue_url }}\nRepo Url- ${{ steps.issue-details.outputs.repo_url }}'
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLAC_BOT_TOKEN }}
